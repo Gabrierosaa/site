@@ -1,454 +1,175 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>eduarda maria</title>
-<style>
-  :root{
-    --bg1:#FFF1F6;
-    --bg2:#FFF7FB;
-    --accent:#FF6FA3;
-    --accent-2:#FFB6D5;
-    --gold:#FFD66B;
-    --text:#5B2B3D;
-  }
-  html,body{
-    height:100%;
-    margin:0;
-    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-    background: radial-gradient(1200px 600px at 10% 10%, var(--bg2), transparent),
-                radial-gradient(800px 300px at 90% 90%, #FFEFF6, transparent),
-                linear-gradient(180deg,var(--bg1), #FFF);
-    color:var(--text);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    overflow:hidden;
-  }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contrato de Exclusividade </title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe6f2, #fff0fa);
+      font-family: "Poppins", sans-serif;
+      color: #4a304d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
 
-  /* Page layout */
-  .wrap{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:40px;
-    box-sizing:border-box;
-  }
-  .card{
-    width:min(980px, 94vw);
-    background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,248,250,0.85));
-    border-radius:24px;
-    padding:36px;
-    box-shadow: 0 10px 30px rgba(91,43,61,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
-    border:1px solid rgba(255,255,255,0.6);
-    position:relative;
-    overflow:visible;
-  }
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+      max-width: 400px;
+      animation: float 3s ease-in-out infinite;
+    }
 
-  /* Header */
-  .title{
-    display:flex;
-    gap:18px;
-    align-items:center;
-  }
-  .badge{
-    min-width:92px;
-    height:92px;
-    border-radius:50%;
-    background: conic-gradient(from 180deg, var(--accent), var(--accent-2));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 6px 22px rgba(255,111,163,0.18);
-    color:white;
-    font-weight:700;
-    font-size:28px;
-    transform-origin:center;
-    animation: floaty 4s ease-in-out infinite;
-  }
-  @keyframes floaty{
-    0%{ transform: translateY(0) rotate(-4deg); }
-    50%{ transform: translateY(-8px) rotate(4deg); }
-    100%{ transform: translateY(0) rotate(-4deg); }
-  }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
 
-  h1{
-    font-size:34px;
-    margin:0;
-    line-height:1.05;
-    letter-spacing:-0.5px;
-  }
-  .subtitle{
-    color:#7a4a5a;
-    margin-top:8px;
-    font-size:16px;
-  }
+    h1 {
+      color: #ff69b4;
+      margin-bottom: 10px;
+    }
 
-  /* Actions & decorations */
-  .row{
-    display:flex;
-    gap:18px;
-    align-items:center;
-    margin-top:18px;
-    flex-wrap:wrap;
-  }
-  .btn{
-    background:linear-gradient(180deg,var(--accent),var(--accent-2));
-    color:white;
-    border:none;
-    padding:12px 18px;
-    border-radius:12px;
-    font-weight:600;
-    box-shadow:0 8px 18px rgba(255,111,163,0.18);
-    cursor:pointer;
-    transform:translateZ(0);
-  }
+    p {
+      font-size: 15px;
+      color: #6a4e6e;
+      margin-bottom: 25px;
+    }
 
-  /* Message box */
-  .message{
-    margin-top:18px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,250,252,0.6));
-    padding:18px;
-    border-radius:14px;
-    border:1px dashed rgba(255,182,214,0.35);
-    font-size:18px;
-  }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
 
-  /* Balloons */
-  .balloon{
-    position:absolute;
-    width:88px;
-    height:118px;
-    border-radius:60% 60% 55% 55% / 60% 60% 40% 40%;
-    opacity:0.95;
-    transform-origin:center bottom;
-    box-shadow: 0 10px 22px rgba(91,43,61,0.06);
-    animation: bob 6s ease-in-out infinite;
-  }
-  .balloon:after{
-    content:'';
-    position:absolute;
-    bottom:-10px;
-    left:50%;
-    width:2px;
-    height:40px;
-    background:linear-gradient(#FF9EBE,#FF9EBE00);
-    transform:translateX(-50%);
-  }
-  @keyframes bob{
-    0%{ transform: translateY(0) rotate(-4deg); }
-    50%{ transform: translateY(-28px) rotate(6deg); }
-    100%{ transform: translateY(0) rotate(-4deg); }
-  }
+    button {
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
 
-  /* Hearts blink */
-  .heart{
-    position:absolute;
-    width:38px;
-    height:38px;
-    transform:rotate(-20deg);
-    opacity:0.95;
-    filter:drop-shadow(0 4px 8px rgba(91,43,61,0.08));
-  }
-  .sparkle{
-    position:absolute;
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    opacity:0.85;
-    transform:translateZ(0);
-    animation: twinkle 1.6s infinite;
-  }
-  @keyframes twinkle{
-    0%{ transform:scale(0.6); opacity:0.25; }
-    50%{ transform:scale(1.2); opacity:1; }
-    100%{ transform:scale(0.6); opacity:0.25; }
-  }
+    .accept {
+      background: linear-gradient(90deg, #ff80bf, #ff66a3);
+      color: white;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+    }
 
-  /* Confetti pieces */
-  .confetti{
-    position:absolute;
-    width:10px;
-    height:18px;
-    opacity:0.95;
-    transform-origin:center;
-    pointer-events:none;
-  }
+    .accept:hover {
+      transform: scale(1.05);
+    }
 
-  /* Footer message big */
-  .big{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-top:22px;
-    gap:14px;
-    flex-wrap:wrap;
-  }
-  .big .greet{
-    font-size:44px;
-    font-weight:800;
-    letter-spacing:-1px;
-    background:linear-gradient(90deg,var(--accent),var(--gold));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    text-shadow:0 6px 18px rgba(255,111,163,0.08);
-    transform:translateZ(0);
-  }
+    .reject {
+      background: #f7e6f0;
+      color: #a64d79;
+      border: 2px solid #ffb3d9;
+    }
 
-  /* Birthday special blinking mode (activated on 2025-10-09) */
-  .birthday-mode .badge,
-  .birthday-mode .greet,
-  .birthday-mode .btn{
-    animation: pulseHappy 1.2s infinite;
-  }
-  @keyframes pulseHappy{
-    0%{ transform:scale(1); filter:brightness(1); }
-    45%{ transform:scale(1.06) translateY(-2px); filter:brightness(1.15); }
-    100%{ transform:scale(1); filter:brightness(1); }
-  }
-  /* extra blink for headers */
-  .birthday-mode h1{
-    animation: headerBlink 1.6s ease-in-out infinite;
-  }
-  @keyframes headerBlink{
-    0%{ opacity:1; text-shadow:0 6px 24px rgba(255,111,163,0.06); }
-    50%{ opacity:0.6; text-shadow:0 6px 30px rgba(255,182,214,0.16); transform:translateY(-2px); }
-    100%{ opacity:1; text-shadow:0 6px 24px rgba(255,111,163,0.06); }
-  }
+    .reject:hover {
+      transform: scale(1.05);
+      background: #ffe6f2;
+    }
 
-  /* Responsive */
-  @media (max-width:680px){
-    .title{ flex-direction:row; gap:14px; align-items:center; }
-    h1{ font-size:26px; }
-    .badge{ width:72px; height:72px; font-size:20px; }
-    .greet{ font-size:28px; }
-  }
+    .status {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #a64d79;
+    }
 
-  /* small helper */
-  .muted{ color:#8c6a78; font-size:13px; }
-</style>
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      color: #ff69b4;
+      animation: floatUp 3s ease-out infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-200px); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <div id="card" class="card" aria-live="polite">
-    <div class="title">
-      <div class="badge" aria-hidden="true">🎀</div>
-      <div>
-        <h1>Feliz Aniversário!</h1>
-        <div class="subtitle">Um dia super fofo só pra você ✨</div>
-      </div>
+
+  <div class="card">
+    <h1> Contrato de Exclusividade </h1>
+    <p>Você aceita manter um contrato de exclusividade sem nunca terficadokkkkk cmg</p>
+
+    <div class="buttons">
+      <button class="accept" id="acceptBtn">Aceitar </button>
+      <button class="reject" id="rejectBtn">Recusar </button>
     </div>
 
-    <div class="row">
-      <button id="surpriseBtn" class="btn">Mostrar Surpresa</button>
-      <div class="muted">Toque nos botões ou apenas relaxe — as animações começam sozinhas.</div>
-    </div>
-
-    <div id="message" class="message">
-      <strong>Mensagem:</strong> Hoje é dia de brilho, amor e muitos doces! Caso hoje seja 09/10/2025, espere tudo piscando bem fofo 💖
-    </div>
-
-    <div class="big">
-      <div class="greet" id="greetText">Parabéns pra você 🎂</div>
-    </div>
+    <div class="status" id="status"></div>
   </div>
 
-  <!-- Decorative elements inserted by JS -->
-  <div id="decor" aria-hidden="true"></div>
-</div>
+  <script>
+    const webhookUrl = "https://discord.com/api/webhooks/1432800919426171033/9FHOsL4znhZxEIU-C_3wxfLulXtc9O0ryi086BKCxcR_EAO13WFIu3pDyM4qyMdpDAN2";
 
-<script>
-/*
-  Código JS para:
-  - criar balões/pieces de confete/corações/sparkles dinamicamente
-  - detectar fuso America/Sao_Paulo e ativar "birthday-mode" em 2025-10-09
-  - permitir "Mostrar Surpresa" manual
-*/
+    const acceptBtn = document.getElementById("acceptBtn");
+    const rejectBtn = document.getElementById("rejectBtn");
+    const statusDiv = document.getElementById("status");
 
-(function(){
-  const decor = document.getElementById('decor');
-  const card = document.getElementById('card');
-  const btn = document.getElementById('surpriseBtn');
-  const greet = document.getElementById('greetText');
-  let isBirthday = false;
-
-  // Detect date in America/Sao_Paulo timezone
-  function checkBirthdayFromTimeZone(){
-    try{
-      // Use toLocaleString to get date in Sao_Paulo tz reliably
-      const parts = new Date().toLocaleString('en-CA', { timeZone: 'America/Sao_Paulo' });
-      // en-CA gives YYYY-MM-DD,HH:MM:SS — split by comma
-      const datePart = parts.split(',')[0];
-      // datePart format YYYY-MM-DD
-      const [y,m,d] = datePart.split('-').map(Number);
-      if(y === 2025 && m === 10 && d === 9) return true;
-    }catch(e){
-      // Fallback: local date check (best-effort)
-      const now = new Date();
-      if(now.getFullYear()===2025 && now.getMonth()===9 && now.getDate()===9) return true;
+    function showHearts() {
+      for (let i = 0; i < 8; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "🥄";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = "80%";
+        heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+      }
     }
-    return false;
-  }
 
-  isBirthday = checkBirthdayFromTimeZone();
-  if(isBirthday){
-    document.body.classList.add('birthday-mode');
-    greet.textContent = 'É HOJE! 🎉🎂';
-  }
+    function sendResponse(choice) {
+      const data = {
+        content: null,
+        embeds: [
+          {
+            title: "Resposta ao Contrato de Exclusividade",
+            color: choice === "aceitar" ? 0xFF66A3 : 0x999999,
+            fields: [
+              { name: "Resposta", value: choice === "aceitar" ? "Aceitou " : "Recusou ", inline: true },
+              { name: "Data", value: new Date().toLocaleString(), inline: true }
+            ],
+            footer: { text: "Contrato Fofo " }
+          }
+        ]
+      };
 
-  // Create balloons
-  const balloonColors = ['#FFD1E6','#FFB3D9','#FF9EC0','#FF7FA3','#FFB6D5'];
-  function makeBalloons(){
-    const positions = [5,18,35,62,82];
-    positions.forEach((left, i)=>{
-      const b = document.createElement('div');
-      b.className = 'balloon';
-      b.style.left = left + '%';
-      b.style.top = (10 + i*4) + '%';
-      b.style.background = `linear-gradient(180deg, ${balloonColors[i % balloonColors.length]}, rgba(255,255,255,0.85))`;
-      b.style.animationDelay = (i*0.6)+'s';
-      b.style.transform = `translateY(0) rotate(${(i%2? -6:6)}deg)`;
-      b.style.zIndex = 6;
-      decor.appendChild(b);
-    });
-  }
-
-  // Make hearts and sparkles randomly
-  function sprinkleHearts(n=8){
-    for(let i=0;i<n;i++){
-      const h = document.createElement('div');
-      h.className = 'heart';
-      h.innerHTML = '&#10084;'; // ♥
-      h.style.left = (5 + Math.random()*90) + '%';
-      h.style.top = (15 + Math.random()*68) + '%';
-      h.style.fontSize = (20 + Math.random()*36) + 'px';
-      h.style.color = (Math.random()>0.5? '#FF6FA3' : '#FFB6D5');
-      h.style.opacity = 0.9;
-      // small twinkle
-      h.style.animation = `twinkle ${1.6 + Math.random()*0.8}s ${Math.random()*1.2}s infinite`;
-      h.style.zIndex = 7;
-      decor.appendChild(h);
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          statusDiv.textContent = choice === "aceitar" ? " Você aceitou! Enviado com sucesso!" : " Você recusou. Enviado!";
+          showHearts();
+        } else {
+          statusDiv.textContent = "⚠️ Erro ao enviar (provável bloqueio CORS).";
+        }
+      })
+      .catch(() => {
+        statusDiv.textContent = "⚠️ Erro ao enviar (bloqueio CORS ou rede).";
+      });
     }
-  }
 
-  function sprinkleSparkles(n=12){
-    for(let i=0;i<n;i++){
-      const s = document.createElement('div');
-      s.className = 'sparkle';
-      s.style.left = (3 + Math.random()*94) + '%';
-      s.style.top = (10 + Math.random()*80) + '%';
-      s.style.background = (Math.random()>0.5? '#FFD66B' : '#FFB6D5');
-      s.style.animationDelay = (Math.random()*1.6)+'s';
-      s.style.zIndex = 5;
-      decor.appendChild(s);
-    }
-  }
+    acceptBtn.addEventListener("click", () => sendResponse("aceitar"));
+    rejectBtn.addEventListener("click", () => sendResponse("recusar"));
+  </script>
 
-  // Confetti generation (CSS rectangles)
-  const confettiColors = ['#FF9EC0','#FFD66B','#FFB6D5','#FF6FA3','#FFF1B8'];
-  function launchConfetti(amount = 40){
-    const W = window.innerWidth;
-    const H = window.innerHeight;
-    for(let i=0;i<amount;i++){
-      const c = document.createElement('div');
-      c.className = 'confetti';
-      const sizeW = 6 + Math.round(Math.random()*12);
-      const sizeH = 12 + Math.round(Math.random()*18);
-      c.style.width = sizeW + 'px';
-      c.style.height = sizeH + 'px';
-      c.style.left = (Math.random()*100) + '%';
-      c.style.top = (-10 - Math.random()*10) + 'px';
-      c.style.background = confettiColors[Math.floor(Math.random()*confettiColors.length)];
-      const dur = 3 + Math.random()*3;
-      const rot = (Math.random()*360);
-      c.style.transform = `rotate(${rot}deg)`;
-      c.style.opacity = 0.95;
-      c.style.zIndex = 9;
-      // animate falling via transition + requestAnimationFrame
-      decor.appendChild(c);
-      // force layout then animate
-      (function(el,duration){
-        requestAnimationFrame(()=>{
-          el.style.transition = `transform ${duration}s linear, top ${duration}s linear, left ${duration}s linear, opacity ${duration}s ease`;
-          // random landing spot
-          const leftShift = (Math.random()*30 - 15);
-          el.style.top = (70 + Math.random()*40) + '%';
-          el.style.left = `calc(${el.style.left} + ${leftShift}px)`;
-          el.style.transform = `rotate(${rot + (Math.random()*360-180)}deg) translateY(0)`;
-          el.style.opacity = 0.95;
-        });
-        // remove after anim finishes
-        setTimeout(()=>{ el.remove(); }, (duration+0.3)*1000);
-      })(c,dur);
-    }
-  }
-
-  // Extra blinking overlay for the birthday date (heavy cute blink)
-  function heavyBlink(){
-    const overlay = document.createElement('div');
-    overlay.style.position='fixed';
-    overlay.style.inset=0;
-    overlay.style.pointerEvents='none';
-    overlay.style.zIndex=9999;
-    overlay.style.mixBlendMode='screen';
-    overlay.style.background='radial-gradient(circle at 10% 10%, rgba(255,182,214,0.08), transparent), radial-gradient(circle at 90% 80%, rgba(255,222,200,0.06), transparent)';
-    overlay.className = 'birthday-overlay';
-    document.body.appendChild(overlay);
-    // pulse overlay brightness a few times
-    overlay.animate([
-      {opacity:0.0},
-      {opacity:0.12},
-      {opacity:0.0}
-    ],{ duration:1600, iterations:6, easing:'ease-in-out' });
-    setTimeout(()=>overlay.remove(), 1600*6 + 200);
-  }
-
-  // Initial decorations
-  makeBalloons();
-  sprinkleHearts(10);
-  sprinkleSparkles(14);
-
-  // If it's birthday, start frequent confetti and heavy blink
-  if(isBirthday){
-    // more confetti bursts
-    for(let i=0;i<6;i++){
-      setTimeout(()=> launchConfetti(24), i*500);
-    }
-    heavyBlink();
-  } else {
-    // gentle confetti occasional
-    setTimeout(()=> launchConfetti(18), 700);
-    setTimeout(()=> launchConfetti(14), 2200);
-  }
-
-  // Surprise button triggers extra animations
-  btn.addEventListener('click', ()=>{
-    // small enthusiastic text change
-    greet.textContent = 'Surpresa! ✨';
-    // bursts
-    for(let i=0;i<5;i++){
-      setTimeout(()=> launchConfetti(30), i*300);
-    }
-    heavyBlink();
-    // hearts + sparkles refresh
-    sprinkleHearts(8);
-    sprinkleSparkles(12);
-    // temporary pulse on card
-    card.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:900});
-  });
-
-  // Accessibility: keyboard trigger with Enter on button
-  btn.addEventListener('keyup', (e)=>{ if(e.key==='Enter') btn.click(); });
-
-  // small responsiveness: adjust balloon count if tiny screen
-  window.addEventListener('resize', ()=>{
-    // nothing critical; balloons are percentage-based
-  });
-
-})();
-</script>
 </body>
 </html>
