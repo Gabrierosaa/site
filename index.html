@@ -1,175 +1,367 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contrato de Exclusividade </title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #ffe6f2, #fff0fa);
-      font-family: "Poppins", sans-serif;
-      color: #4a304d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      overflow: hidden;
-    }
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>treino do dia 30</title>
 
-    .card {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      text-align: center;
-      max-width: 400px;
-      animation: float 3s ease-in-out infinite;
-    }
+    <!-- iOS viewport & safe area -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+    <!-- Tailwind CDN for convenience (keeps CSS concise) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-    h1 {
-      color: #ff69b4;
-      margin-bottom: 10px;
-    }
+    <style>
+      :root{
+        --bg-1: #0f172a; /* dark fallback */
+        --glass: rgba(255,255,255,0.6);
+        --glass-dark: rgba(17,24,39,0.6);
+        --accent: 218 86 255; /* H S L used in color-stop via modern CSS when needed */
+        --safe-top: env(safe-area-inset-top);
+        --safe-bottom: env(safe-area-inset-bottom);
+      }
 
-    p {
-      font-size: 15px;
-      color: #6a4e6e;
-      margin-bottom: 25px;
-    }
+      /* Basic reset + iOS optimizations */
+      html,body{height:100%;}
+      body{
+        margin:0;
+        font-family: -apple-system, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        -webkit-touch-callout:none;
+        -webkit-tap-highlight-color: transparent;
+        background: linear-gradient(180deg,#0ea5a1 0%, #7c3aed 50%, #f472b6 100%);
+        background-size: 200% 200%;
+        animation: bgShift 18s ease-in-out infinite;
+        color: #0b1220;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+      }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+      @keyframes bgShift{0%{background-position:0% 20%}50%{background-position:100% 80%}100%{background-position:0% 20%}}
 
-    button {
-      border: none;
-      padding: 10px 20px;
-      font-size: 15px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.2s ease;
-    }
+      /* Respect safe areas */
+      .app{
+        padding-top: calc(16px + var(--safe-top));
+        padding-bottom: calc(24px + var(--safe-bottom));
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+      }
 
-    .accept {
-      background: linear-gradient(90deg, #ff80bf, #ff66a3);
-      color: white;
-      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
-    }
+      header.site-header{
+        position:sticky;
+        top:0;
+        z-index:40;
+        backdrop-filter: blur(8px) saturate(120%);
+        background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.35));
+        border-bottom: 1px solid rgba(255,255,255,0.18);
+        padding:12px 16px;
+        display:flex;
+        align-items:center;
+        gap:12px;
+      }
 
-    .accept:hover {
-      transform: scale(1.05);
-    }
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark){
+        :root{--bg-1:#020617}
+        body{color:#e6eef8}
+        header.site-header{background:linear-gradient(180deg, rgba(6,8,16,0.6), rgba(6,8,16,0.35)); border-bottom:1px solid rgba(255,255,255,0.04)}
+      }
 
-    .reject {
-      background: #f7e6f0;
-      color: #a64d79;
-      border: 2px solid #ffb3d9;
-    }
+      /* Timeline container */
+      .timeline{
+        width:100%;
+        max-width:760px;
+        margin:20px auto;
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+        padding:8px;
+      }
 
-    .reject:hover {
-      transform: scale(1.05);
-      background: #ffe6f2;
-    }
+      /* Card styling optimized for retina displays */
+      .card{
+        border-radius:18px;
+        overflow:hidden;
+        box-shadow: 0 10px 30px rgba(2,6,23,0.18);
+        transform-origin:center;
+        will-change: transform, opacity;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
 
-    .status {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #a64d79;
-    }
+      .card .inner{
+        padding:16px 18px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+      }
 
-    .heart {
-      position: absolute;
-      font-size: 18px;
-      color: #ff69b4;
-      animation: floatUp 3s ease-out infinite;
-    }
+      @media (prefers-color-scheme: dark){
+        .card .inner{ background: linear-gradient(180deg, rgba(6,8,16,0.6), rgba(6,8,16,0.48)); border:0 }
+      }
 
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-200px); opacity: 0; }
-    }
-  </style>
-</head>
-<body>
+      /* Dot + line on mobile (left aligned) */
+      .timeline-line{
+        position:relative;
+        margin-left:34px;
+        padding-left:18px;
+      }
 
-  <div class="card">
-    <h1> Contrato de Exclusividade </h1>
-    <p>Você aceita manter um contrato de exclusividade sem nunca terficadokkkkk cmg</p>
+      .timeline-line::before{
+        content:'';
+        position:absolute;
+        left:8px;
+        top:0;
+        bottom:0;
+        width:3px;
+        border-radius:999px;
+        background:linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.15));
+        box-shadow:0 6px 18px rgba(0,0,0,0.08);
+      }
 
-    <div class="buttons">
-      <button class="accept" id="acceptBtn">Aceitar </button>
-      <button class="reject" id="rejectBtn">Recusar </button>
+      .dot{
+        position:absolute;
+        left:0;
+        top:18px;
+        width:18px;
+        height:18px;
+        border-radius:50%;
+        background: radial-gradient(circle at 30% 25%, #fff, #e6e6ff 30%);
+        border:4px solid rgba(124,58,237,0.95);
+        box-shadow: 0 6px 18px rgba(124,58,237,0.18), 0 0 14px rgba(124,58,237,0.12) inset;
+      }
+
+      /* Card header */
+      .meta{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:8px;
+      }
+
+      .date-pill{
+        font-weight:600;
+        font-size:13px;
+        padding:6px 10px;
+        border-radius:999px;
+        background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+        box-shadow: 0 4px 12px rgba(2,6,23,0.06);
+      }
+
+      @media (prefers-color-scheme: dark){
+        .date-pill{ background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); }
+      }
+
+      h1.title{font-size:20px;margin:0}
+      p.lead{margin:8px 0 0;font-size:15px;opacity:0.95}
+
+      /* Touch feedback (pressed) */
+      .pressable{transition:transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s}
+      .pressable:active{transform:translateY(3px) scale(.998); box-shadow:0 6px 22px rgba(0,0,0,0.12)}
+
+      /* subtle 3D tilt on drag hover for devices that support pointer */
+      @media (pointer:fine){
+        .card:hover{transform:translateY(-6px) scale(1.01)}
+      }
+
+      /* large text on iPhone widths */
+      @media (max-width:420px){
+        h1.title{font-size:18px}
+        p.lead{font-size:14px}
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce){
+        *{animation:none!important;transition:none!important}
+      }
+
+      /* small helper for parallax background */
+      .parallax-bg{
+        position:fixed;left:0;top:0;right:0;bottom:0;z-index:-1;pointer-events:none;mix-blend-mode:screen;opacity:0.9}
+
+    </style>
+  </head>
+  <body>
+    <div class="app">
+
+      <header class="site-header">
+        <div style="flex:1;">
+          <div style="font-weight:800;font-size:17px;letter-spacing:0.2px">LINHA DO TEMPO</div>
+          <div style="font-size:12px;color:rgba(15,23,42,0.6)">SITE BOBO PARA TREINAR</div>
+        </div>
+      </header>
+
+      <!-- decorative parallax shapes -->
+      <svg class="parallax-bg" width="100%" height="100%" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" aria-hidden>
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.6"/>
+          </linearGradient>
+        </defs>
+        <g fill="url(#g1)" opacity="0.08">
+          <circle id="c1" cx="600" cy="120" r="240" />
+          <circle id="c2" cx="120" cy="680" r="320" />
+        </g>
+      </svg>
+
+      <main style="flex:1;overflow:auto;-webkit-overflow-scrolling:touch;">
+
+        <section class="timeline">
+
+          <!-- item 1 -->
+          <div class="timeline-line">
+            <div class="dot" aria-hidden></div>
+            <article class="card pressable" data-animate>
+              <div class="inner">
+                <div class="meta">
+                  <div>
+                    <h1 class="title">Dia 01 - Instagram</h1>
+                    <p class="lead">O começo!</p>
+                  </div>
+                  <div class="date-pill">Domingo</div>
+                </div>
+                <p style="margin-top:12px;opacity:0.9">Curti story falei do olho, respondeu achei q ia tomar vacuo passou zap e fofocamos e só.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- item 2 -->
+          <div class="timeline-line">
+            <div class="dot" aria-hidden></div>
+            <article class="card pressable" data-animate>
+              <div class="inner">
+                <div class="meta">
+                  <div>
+                    <h1 class="title">Dia 2 - O Zap Zap</h1>
+                    <p class="lead">tanto faz o titulo</p>
+                  </div>
+                  <div class="date-pill">Segunda</div>
+                </div>
+                <p style="margin-top:12px;opacity:0.92">Fiquei bastante interessado em você e comecei a te conhecer ein, conversamo até 1h30.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- item 3 -->
+          <div class="timeline-line">
+            <div class="dot" aria-hidden></div>
+            <article class="card pressable" data-animate>
+              <div class="inner">
+                <div class="meta">
+                  <div>
+                    <h1 class="title">Dia 3 - A Crinjada</h1>
+                    <p class="lead">comecei o medo de perder vckkk</p>
+                  </div>
+                  <div class="date-pill">terça</div>
+                </div>
+                <p style="margin-top:12px;opacity:0.92">Criei um site para vc aceitar exclusividade comigo ops</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- item 4 -->
+          <div class="timeline-line">
+            <div class="dot" aria-hidden></div>
+            <article class="card pressable" data-animate>
+              <div class="inner">
+                <div class="meta">
+                  <div>
+                    <h1 class="title">Dia 4 - Agora pouco</h1>
+                    <p class="lead">Design final otimizado para iPhone.</p>
+                  </div>
+                  <div class="date-pill">hoje</div>
+                </div>
+                <p style="margin-top:12px;opacity:0.94">eu to fazendo esse site aqui</p>
+              </div>
+            </article>
+          </div>
+
+        </section>
+
+      </main>
+
+      <footer style="text-align:center;padding:14px 18px;font-size:13px;color:rgba(2,6,23,0.6);">
+        feito pelo drake de SP
+      </footer>
+
     </div>
 
-    <div class="status" id="status"></div>
-  </div>
+    <script>
+      // -----------------------------
+      // Lightweight animation + parallax optimized for iOS
+      // -----------------------------
 
-  <script>
-    const webhookUrl = "https://discord.com/api/webhooks/1432800919426171033/9FHOsL4znhZxEIU-C_3wxfLulXtc9O0ryi086BKCxcR_EAO13WFIu3pDyM4qyMdpDAN2";
+      // Detect iPhone-ish widths to slightly tweak behavior
+      const isiPhone = /iPhone/.test(navigator.userAgent) || window.screen.width <= 420;
 
-    const acceptBtn = document.getElementById("acceptBtn");
-    const rejectBtn = document.getElementById("rejectBtn");
-    const statusDiv = document.getElementById("status");
-
-    function showHearts() {
-      for (let i = 0; i < 8; i++) {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "🥄";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.top = "80%";
-        heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 3000);
-      }
-    }
-
-    function sendResponse(choice) {
-      const data = {
-        content: null,
-        embeds: [
-          {
-            title: "Resposta ao Contrato de Exclusividade",
-            color: choice === "aceitar" ? 0xFF66A3 : 0x999999,
-            fields: [
-              { name: "Resposta", value: choice === "aceitar" ? "Aceitou " : "Recusou ", inline: true },
-              { name: "Data", value: new Date().toLocaleString(), inline: true }
-            ],
-            footer: { text: "Contrato Fofo " }
+      // IntersectionObserver to reveal cards (better than scroll libraries for perf)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.style.transform = 'translateY(0) scale(1)';
+            entry.target.style.opacity = '1';
+            entry.target.style.transition = 'transform 560ms cubic-bezier(.2,.9,.25,1), opacity 560ms ease-out';
+            observer.unobserve(entry.target);
           }
-        ]
-      };
+        });
+      }, { threshold: 0.12 });
 
-      fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-      .then(response => {
-        if (response.ok) {
-          statusDiv.textContent = choice === "aceitar" ? " Você aceitou! Enviado com sucesso!" : " Você recusou. Enviado!";
-          showHearts();
-        } else {
-          statusDiv.textContent = "⚠️ Erro ao enviar (provável bloqueio CORS).";
-        }
-      })
-      .catch(() => {
-        statusDiv.textContent = "⚠️ Erro ao enviar (bloqueio CORS ou rede).";
+      document.querySelectorAll('[data-animate]').forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px) scale(.995)';
+        el.style.willChange = 'transform, opacity';
+        // stagger
+        setTimeout(()=> observer.observe(el), i*120);
       });
-    }
 
-    acceptBtn.addEventListener("click", () => sendResponse("aceitar"));
-    rejectBtn.addEventListener("click", () => sendResponse("recusar"));
-  </script>
+      // Parallax subtle: move decorative circles slightly on scroll using requestAnimationFrame
+      const c1 = document.getElementById('c1');
+      const c2 = document.getElementById('c2');
+      let lastY = window.scrollY;
+      function parallax(){
+        const y = window.scrollY;
+        const dy = y - lastY;
+        lastY = y;
+        // damped movement
+        const t = y * 0.06;
+        if(c1) c1.setAttribute('cy', 120 + t);
+        if(c2) c2.setAttribute('cy', 680 - t*0.7);
+        requestAnimationFrame(parallax);
+      }
+      requestAnimationFrame(parallax);
 
-</body>
+      // Theme toggle — respects system by default, toggles by adding data-theme attribute
+      (function(){
+        const btn = document.getElementById('themeToggle');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if(prefersDark) document.documentElement.setAttribute('data-theme','dark');
+        btn.addEventListener('click', ()=>{
+          const cur = document.documentElement.getAttribute('data-theme');
+          if(cur === 'dark'){ document.documentElement.removeAttribute('data-theme'); localStorage.theme='light'; }
+          else { document.documentElement.setAttribute('data-theme','dark'); localStorage.theme='dark'; }
+        });
+      })();
+
+      // iOS touch feedback: add subtle pulse on tap for pressable elements
+      document.querySelectorAll('.pressable').forEach(el=>{
+        el.addEventListener('touchstart', ()=> el.style.transform='scale(.995) translateY(1px)');
+        el.addEventListener('touchend', ()=> setTimeout(()=> el.style.transform='', 90));
+      });
+
+      // Accessibility: respect reduce-motion
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        // stop parallax animation
+        // (parallax uses rAF so it won't do heavy CSS)
+      }
+
+      // Improve font-size rendering on iPhone by using -webkit-text-size-adjust
+      document.documentElement.style.webkitTextSizeAdjust = '100%';
+
+    </script>
+  </body>
 </html>
